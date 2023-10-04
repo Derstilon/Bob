@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script src="lib/three.js"></script>
+    <script src="lib/threeCSG.js"></script>
+    <script src="js/Plane.js"></script>
+    <script src="js/Klocek.js"></script>
+    <script src="js/Main.js"></script>
+    <script src="js/Game.js"></script>
+    <script src="js/Net.js"></script>
+    <script>
+        /*
+	        inicjalizacja poszczególnych klas
+        */
+        var game,
+            main,
+            net
+        window.addEventListener("load",
+        function () {
+            game = new Game();
+            net = new Net();
+            main = new Main();
+        })
+    </script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+            background: #3F6077;
+        }
+        
+        #render {
+            width:125vh;
+            height:100vh;
+            margin: auto;
+        }
+        #instruction{
+            position: fixed;
+            height: 100vh;
+            text-align: center;
+            display: flex;
+            justify-content: flex-end;
+            flex-direction: column;
+            align-items: baseline;
+        }
+        #instruction p{
+            padding: 0  1.5vmin 1.5vmin 1.5vmin;
+            color: #c6e2ff;
+            font-weight: bold;
+        }
+        @media all and (max-width: 125vh){
+            #render {
+                width: 100vw;
+                height: 80vw;
+            }
+            #instruction {
+                bottom: 0;
+                height: auto;
+                width: 100vw;
+                flex-direction: row;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="render"></div>
+    <div id="instruction">
+        <p id="delInstruction">[Q] - usuń klocek</p>
+        <p>[W] - wydłuż klocek</p>
+        <p>[E] - zmień kolor</p>
+        <p>[R] - obróć klocek</p>
+    </div>
+</body>
+</html>
